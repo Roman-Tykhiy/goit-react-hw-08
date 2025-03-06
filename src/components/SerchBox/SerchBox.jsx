@@ -1,27 +1,32 @@
-import { useDispatch, useSelector } from "react-redux";
-import s from "./SerchBox.module.css"
-import { changeFilter } from "../../redux/filtersSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import s from './SerchBox.module.css';
+import { changeFilter } from '../../redux/filters/slice';
+import { selectNameFilter } from '../../redux/filters/selectors';
 
-const SerchBox = () => {
-  const searchTerm = useSelector((state) => state.filters.filters.name);
+const SearchBox = () => {
   const dispatch = useDispatch();
-
-  const handleSearchChange = (evt) => {
-    dispatch(changeFilter(evt.target.value.trim() || ""));
+  const searchQuery = useSelector(selectNameFilter);
+  
+  
+  const onSearch = e => {
+    dispatch(changeFilter(e.target.value));
   };
   return (
-    
-      <div className={s.container}>
-      <p className={s.text}>Find contacts by name</p>
-        <input className={s.input}
-          value={searchTerm}
-          name="name"
-          onChange={handleSearchChange} />
-      </div>
-      
-    
-    
-  )
-
-}
-export default SerchBox;
+    <div className={s.container}>
+      <label className={s.searchLabelWrapper}>
+        <span className={s.text}>Пошук контакта за ім'ям</span>
+        <div className={s.searchInputItem} tabIndex="1">
+          <div className={s.searchIcon}>
+          </div>
+          <input
+            className={s.input}
+            type="text"
+            value={searchQuery}
+            onChange={onSearch}
+          />
+        </div>
+      </label>
+    </div>
+  );
+};
+export default SearchBox;

@@ -3,14 +3,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 12px 12px;
+    
     
 }
 .text {
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
+
 }
 .input {
+    margin-top: 12px;
+    margin-bottom: 12px;
     width: 240px;
     height: 24px;
     border: 2px solid rgba(54, 53, 51, 0.932);

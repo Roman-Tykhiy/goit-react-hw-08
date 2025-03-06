@@ -1,5 +1,6 @@
 .container {
     padding: 12px 12px;
+    
 
 }
 .form {
@@ -28,6 +29,7 @@
         border-radius: 20px;
         color:gray;
         background-color: azure;
+        margin-bottom: 12px;
 }
 h6 {
     margin: 0;

@@ -1,0 +1,39 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 260px;
+}
+
+.field {
+    width: 240px;
+    height: 24px;
+    border: 2px solid rgba(54, 53, 51, 0.932);
+    border-radius: 10px;
+}
+.field:hover {
+    border: 0px ;
+}
+.label {
+    font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+}
+.error {
+font-size: 20px;
+    font-family:cursive;
+    color: red;
+}
+.submit {
+    margin: 12px 0;
+    width: 160px;
+        border: 2px solid rgba(54, 53, 51, 0.932);
+        border-radius: 20px;
+        background-color: azure;
+        color: black;
+        cursor: pointer;
+}
+.submit:hover {
+    border: 2px solid rgba(54, 53, 51, 0.932);
+    background-color: rgb(198, 116, 223);
+}

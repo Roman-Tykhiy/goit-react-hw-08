@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    gap: 12px;
+    padding:  0 8px;
+    align-items: center;
+}
+p {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.logout {
+    height: 24px;
+    width: 64px;
+    background-color: azure;
+}
+.logout:hover {
+    background-color: rgb(146, 218, 218);
+}
+

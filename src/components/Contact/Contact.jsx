@@ -1,24 +1,38 @@
-import s from "./Contact.module.css";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
+import clsx from 'clsx';
+import s from './Contact.module.css';
 
-const Contact = ({ contactItem }) => {
+
+// import { normalizePhoneNumber } from './Contact.js';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contacts/operations.js';
+
+const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
-  const { name, number } = contactItem;
-
+  const onDeleteContact = id => {
+    dispatch(deleteContact(id));
+    toast.success('The contact has successfully deleted!', {
+      duration: 4000,
+    });
+  };
   return (
-   <li className={s.ContactItem}>
-            <div>
-                <p className={s.text}>{name}</p>
-                <p>{number}</p>
-            </div>
-        <button className={s.deletebtn}
-          type="button"
-          onClick={() => dispatch(deleteContact(contactItem.id))}>
-        Delete
-      </button>
-    </li>
+    <div className={s.СontactItem} tabIndex="1">
+      <div className={s.contactInfo}>
+        <div className={clsx(s.infoItem, s.contactNameItem)}>
+          <span className={s.contactName}>{name}</span>
+        </div>
+        <div className={clsx(s.infoItem, s.contactNumberItem)}>
+          <span className={s.contactNumber}>
+            {number}
+          </span>
+        </div>
+      </div>
+      <div className={s.contactBtnItem}>
+        <button className={s.btn} onClick={() => onDeleteContact(id)}>
+          Delete
+        </button>
+      </div>
+    </div>
   );
 };
-
 export default Contact;

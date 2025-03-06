@@ -1,22 +1,23 @@
-import { useSelector } from "react-redux";
-import Contact from "../Contact/Contact";
-import s from "./ContactList.module.css"
-import { selectFilteredContacts } from "../../redux/contactsSlice";
+import s from './ContactList.module.css';
+import Contact from '../Contact/Contact.jsx';
+import { useSelector } from 'react-redux';
+import Notification from '../Notification/Notification.jsx';
+import {
+  selectContacts,
+  selectFilteredContacts,
+} from '../../redux/contacts/selectors.js';
 
-   const ContactList = () => {
-  const contactsList = useSelector(selectFilteredContacts);
+const ContactList = () => {
+  const contactList = useSelector(selectContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
-  if (contactsList.length === 0) {
-    return <p>Список контактів порожній.</p>;
-  }
-    return (
-         <ul  className={s.contactList}>
-            {contactsList.map(item => (
-                <Contact key={item.id} contactItem={item} />
-        ))}
-      </ul>
-   )
-   
-}
-
+  if (!contactList?.length) return <Notification />;
+  return (
+    <div className={s.contactList}>
+      {filteredContacts.map(contact => {
+        return <Contact key={contact.id} {...contact} />;
+      })}
+    </div>
+  );
+};
 export default ContactList;
